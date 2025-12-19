@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esqLABS - VR Experience</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow: hidden; }
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(10, 10, 26, 0.8);
+            padding: 12px 18px;
+            border-radius: 12px;
+            color: #a5b4fc;
+            font: 14px system-ui, sans-serif;
+            z-index: 100;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        .info h3 { color: #fff; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h3>esqLABS VR</h3>
+        <p>Mouse to look | WASD to move</p>
+    </div>
+
+    <a-scene renderer="antialias: true" vr-mode-ui="enabled: true">
+        <a-sky color="#050510"></a-sky>
+
+        <!-- Lights -->
+        <a-light type="ambient" color="#4a4a8a" intensity="0.3"></a-light>
+        <a-light type="point" position="0 10 0" color="#6366f1" intensity="0.8" distance="50"></a-light>
+        <a-light type="point" position="-10 5 -10" color="#8b5cf6" intensity="0.5" distance="30"></a-light>
+        <a-light type="point" position="10 5 -10" color="#06b6d4" intensity="0.5" distance="30"></a-light>
+
+        <!-- Stars -->
+        <a-entity id="stars">
+            <a-sphere position="-15 8 -20" radius="0.05" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="12 10 -25" radius="0.04" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="-8 12 -30" radius="0.06" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="20 6 -18" radius="0.03" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="-20 15 -22" radius="0.05" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="8 18 -28" radius="0.04" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="15 14 -32" radius="0.03" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+            <a-sphere position="-12 16 -28" radius="0.06" material="emissive: #fff; emissiveIntensity: 1"></a-sphere>
+        </a-entity>
+
+        <!-- Floating Orbs -->
+        <a-sphere position="-6 3 -8" radius="0.3" material="color: #6366f1; emissive: #6366f1; emissiveIntensity: 0.8; opacity: 0.7; transparent: true"
+            animation="property: position; to: -6 4 -8; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"></a-sphere>
+        <a-sphere position="7 4 -10" radius="0.25" material="color: #8b5cf6; emissive: #8b5cf6; emissiveIntensity: 0.8; opacity: 0.7; transparent: true"
+            animation="property: position; to: 7 5.5 -10; dur: 4000; easing: easeInOutSine; loop: true; dir: alternate"></a-sphere>
+        <a-sphere position="0 6 -15" radius="0.4" material="color: #06b6d4; emissive: #06b6d4; emissiveIntensity: 0.6; opacity: 0.5; transparent: true"
+            animation="property: position; to: 0 7.5 -15; dur: 5000; easing: easeInOutSine; loop: true; dir: alternate"></a-sphere>
+
+        <!-- Ground -->
+        <a-plane rotation="-90 0 0" width="100" height="100" material="color: #0a0a1a; opacity: 0.8; transparent: true"></a-plane>
+
+        <!-- Main Title -->
+        <a-entity position="0 3.5 -6" animation="property: position; to: 0 3.8 -6; dur: 4000; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-plane width="7" height="2.5" position="0 0 -0.1" material="color: #1e1b4b; opacity: 0.85; transparent: true; shader: flat"></a-plane>
+            <a-plane width="7.1" height="2.6" position="0 0 -0.12" material="color: #6366f1; opacity: 0.3; transparent: true; shader: flat"></a-plane>
+            <a-text value="esqLABS" position="0 0.4 0" align="center" color="#fff" width="10" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="Quantitative Systems Pharmacology" position="0 -0.2 0" align="center" color="#a5b4fc" width="5" font="https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"></a-text>
+            <a-text value="Physiologically-Based Modeling & Simulation" position="0 -0.7 0" align="center" color="#6366f1" width="4"></a-text>
+        </a-entity>
+
+        <!-- Card 1: Physiologically Based -->
+        <a-entity position="-5 2 -4" rotation="0 35 0" animation="property: position; to: -5 2.3 -4; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-box width="2.2" height="1.8" depth="0.08" material="color: #1e1b4b; opacity: 0.9; transparent: true"></a-box>
+            <a-box width="2.25" height="1.85" depth="0.06" position="0 0 -0.02" material="color: #6366f1; opacity: 0.2; transparent: true"></a-box>
+            <a-circle position="0 0.55 0.05" radius="0.2" material="color: #6366f1; opacity: 0.8; transparent: true"></a-circle>
+            <a-text value="Physiologically\nBased" position="0 0.1 0.05" align="center" color="#fff" width="2.5" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="PK-Sim & MoBi framework\nfor mechanism-based\nmodel development" position="0 -0.45 0.05" align="center" color="#a5b4fc" width="2.2"></a-text>
+        </a-entity>
+
+        <!-- Card 2: Knowledge Repository -->
+        <a-entity position="-1.8 2 -5.5" rotation="0 12 0" animation="property: position; to: -1.8 2.3 -5.5; dur: 3500; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-box width="2.2" height="1.8" depth="0.08" material="color: #1e1b4b; opacity: 0.9; transparent: true"></a-box>
+            <a-box width="2.25" height="1.85" depth="0.06" position="0 0 -0.02" material="color: #8b5cf6; opacity: 0.2; transparent: true"></a-box>
+            <a-circle position="0 0.55 0.05" radius="0.2" material="color: #8b5cf6; opacity: 0.8; transparent: true"></a-circle>
+            <a-text value="Knowledge\nRepository" position="0 0.1 0.05" align="center" color="#fff" width="2.5" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="Multi-scale data\nintegration across all\nR&D phases" position="0 -0.45 0.05" align="center" color="#a5b4fc" width="2.2"></a-text>
+        </a-entity>
+
+        <!-- Card 3: Translational Science -->
+        <a-entity position="1.8 2 -5.5" rotation="0 -12 0" animation="property: position; to: 1.8 2.3 -5.5; dur: 2800; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-box width="2.2" height="1.8" depth="0.08" material="color: #1e1b4b; opacity: 0.9; transparent: true"></a-box>
+            <a-box width="2.25" height="1.85" depth="0.06" position="0 0 -0.02" material="color: #06b6d4; opacity: 0.2; transparent: true"></a-box>
+            <a-circle position="0 0.55 0.05" radius="0.2" material="color: #06b6d4; opacity: 0.8; transparent: true"></a-circle>
+            <a-text value="Translational\nScience" position="0 0.1 0.05" align="center" color="#fff" width="2.5" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="Preclinical to clinical\ntranslation with animal\n& human physiology" position="0 -0.45 0.05" align="center" color="#a5b4fc" width="2.2"></a-text>
+        </a-entity>
+
+        <!-- Card 4: Precision Medicine -->
+        <a-entity position="5 2 -4" rotation="0 -35 0" animation="property: position; to: 5 2.3 -4; dur: 3200; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-box width="2.2" height="1.8" depth="0.08" material="color: #1e1b4b; opacity: 0.9; transparent: true"></a-box>
+            <a-box width="2.25" height="1.85" depth="0.06" position="0 0 -0.02" material="color: #ec4899; opacity: 0.2; transparent: true"></a-box>
+            <a-circle position="0 0.55 0.05" radius="0.2" material="color: #ec4899; opacity: 0.8; transparent: true"></a-circle>
+            <a-text value="Precision\nMedicine" position="0 0.1 0.05" align="center" color="#fff" width="2.5" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="Individual treatment\neffects & dosing\ndecision support" position="0 -0.45 0.05" align="center" color="#a5b4fc" width="2.2"></a-text>
+        </a-entity>
+
+        <!-- CTA Panel -->
+        <a-entity position="0 0.8 -3.5" animation="property: position; to: 0 0.95 -3.5; dur: 3200; easing: easeInOutSine; loop: true; dir: alternate">
+            <a-plane width="3.2" height="0.7" material="color: #4f46e5; opacity: 0.9; transparent: true"></a-plane>
+            <a-plane width="3.25" height="0.75" position="0 0 -0.01" material="color: #818cf8; opacity: 0.4; transparent: true"></a-plane>
+            <a-text value="Open Systems Pharmacology" position="0 0.05 0.02" align="center" color="#fff" width="3.5" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
+            <a-text value="PK-Sim & MoBi Suite" position="0 -0.2 0.02" align="center" color="#c7d2fe" width="2.5"></a-text>
+        </a-entity>
+
+        <!-- Rotating Rings -->
+        <a-entity position="0 3 -10">
+            <a-torus radius="3" radius-tubular="0.02" material="color: #6366f1; opacity: 0.3; transparent: true" rotation="90 0 0"
+                animation="property: rotation; to: 90 360 0; dur: 20000; easing: linear; loop: true"></a-torus>
+            <a-torus radius="3.5" radius-tubular="0.015" material="color: #8b5cf6; opacity: 0.2; transparent: true" rotation="90 45 0"
+                animation="property: rotation; to: 90 -315 0; dur: 25000; easing: linear; loop: true"></a-torus>
+        </a-entity>
+
+        <!-- Camera -->
+        <a-entity position="0 1.6 2">
+            <a-camera look-controls wasd-controls="acceleration: 30">
+                <a-cursor color="#6366f1" fuse="false"></a-cursor>
+            </a-camera>
+        </a-entity>
+    </a-scene>
+</body>
+</html>
